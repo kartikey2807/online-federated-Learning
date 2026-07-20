@@ -46,7 +46,7 @@ trainsets = CausalChamberDataset(
 )
 trainload = DataLoader(trainsets,batch_size=BATCH_SIZE, shuffle=True)
 
-# ## ------------- Training -------------
+# ## ------------ Training ------------
 for epoch in range(EPOCHS):
     autoencoder_model.train()
     rolling_error = 0.0
