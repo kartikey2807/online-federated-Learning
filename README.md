@@ -3,14 +3,16 @@
 
 You can find the complete thesis report <a href="http://www.diva-portal.org/smash/record.jsf?pid=diva2:2083501">here</a>.
 
-Electronic sensors on trucks produce large amounts of real-time data that can be used to model normal operations and identify anomalies to prevent systematic failures from happening. Several deep learning models such as GANs, LSTM-based autoencoders, and graph neural networks have been proposed for this task. However, these models either don't have an interpretable loss criterion, are slow to capture temporal dependencies, or are unstable to train in the presence of sparse correlations. We propose a transformer-based variational autoencoder (VAE) model that processes the entire time-series window in parallel, captures long-term dependencies, and has explainable reconstruction and KL divergence loss. We implement the said VAE model in an online and federated setting to collaboratively train multiple models on different trucks, allowing them to generalize well without sharing underlying data while also accounting for the memory constraints at the edge. We train this model on data generated from a wind tunnel from <a href="https://github.com/juangamella/causal-chamber">causal chamber</a>, which consists of fans, a hatch, and multiple pressure sensors, and acts as a proxy for truck components. To evaluate the performance of our setup, we track metrics such as precision, recall, F1-score, and the number of true positives, false positives, and false negatives.
+Electronic sensors on trucks produce large amounts of real-time data that can be used to model normal operations and identify anomalies to prevent systematic failures from happening. Several deep learning models such as GANs, LSTM-based autoencoders, and graph neural networks have been proposed for this task. However, these models either don't have an interpretable loss criterion, are slow to capture temporal dependencies, or are unstable to train in the presence of sparse correlations. We propose a transformer-based variational autoencoder (VAE) model that processes the entire time-series window in parallel, captures long-term dependencies, and has explainable reconstruction and KL divergence loss. We implement the said VAE model in an **online and federated setting** to collaboratively train multiple models on different trucks, allowing them to generalize well without sharing underlying data while also accounting for the memory constraints at the edge. We train this model on data generated from a wind tunnel from <a href="https://github.com/juangamella/causal-chamber">causal chamber</a>, which consists of fans, a hatch, and multiple pressure sensors, and acts as a proxy for truck components. To evaluate the performance of our setup, we track metrics such as precision, recall, F1-score, and the number of true positives, false positives, and false negatives.
 
+<br>
+<img src="./Images/">
 <br>
 <img src="./Images/Anomalies.png" width="717px">
 
-*Figure 1. Types of anomalies introduced in time-series sensor data*
+*Figure 2. Types of anomalies introduced in time-series sensor data*
 
-<br>
+We take four such data streams but with different operating modes to end up with non-overlapping distributions.
 
 |Data|Client 1|Client 2|Client 3|Client 4|Central data collection|Offline FL|
 |:---|:-------|:-------|:-------|:-------|:----------------------|:---------|
@@ -25,7 +27,7 @@ Electronic sensors on trucks produce large amounts of real-time data that can be
 
 <img src="./Images/Metric_trend.png" width="717px">
 
-*Figure 2. Trends in precision, recall, and F1-score for different buffer sizes in online FL*
+*Figure 3. Trends in precision, recall, and F1-score for different buffer sizes in online FL*
 
 Our findings establish that the offline and federated learning setup generalizes well to non-overlapping distributions and performs better than local training, where models are trained on a single dataset in isolation. Their performance approaches close to that of the centralized data collection baseline. We also depict the degradation in model performance for the online and federated learning settings as acute memory constraints are applied, which leads to overfitting and memorization of training data.
 
