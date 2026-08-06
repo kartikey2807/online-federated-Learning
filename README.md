@@ -27,3 +27,13 @@ You can find the complete thesis report <a href="http://www.diva-portal.org/smas
 *Figure 2. Trends in precision, recall, and F1-score for different buffer sizes in online FL*
 
 <div align="justify">Our findings establish that the offline and federated learning setup generalizes well to non-overlapping distributions and performs better than local training, where models are trained on a single dataset in isolation. Their performance approaches close to that of the centralized data collection baseline. We also depict the degradation in model performance for the online and federated learning settings as acute memory constraints are applied, which leads to overfitting and memorization of training data.</div>
+
+---
+
+```
+@misc{sharma2026online,
+  title={Online and Federated Learning for Predictive Maintenance in Heavy-Duty Vehicles},
+  author={Sharma, Kartikey},
+  year={2026}
+}
+```
