@@ -29,7 +29,7 @@ We take four such data streams but with different operating ranges, and end up w
 
 <br>
 
-<img src="./Images/Metric_trend.png" width="810px">
+<img src="./Images/Metric_trend.png" width="406px">
 
 *Figure 3. Trends in precision, recall, and F1-score for different buffer sizes in online FL*
 
