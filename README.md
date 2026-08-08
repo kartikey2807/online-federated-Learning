@@ -6,17 +6,19 @@ You can find the complete thesis report <a href="http://www.diva-portal.org/smas
 <div align="justify">Electronic sensors on trucks produce large amounts of real-time data that can be used to model normal operations and identify anomalies to prevent systematic failures from happening. Several deep learning models such as GANs, LSTM-based autoencoders, and graph neural networks have been proposed for this task. However, these models either don't have an interpretable loss criterion, are slow to capture temporal dependencies, or are unstable to train in the presence of sparse correlations. We propose a transformer-based variational autoencoder (VAE) model that processes the entire time-series window in parallel, captures long-term dependencies, and has explainable terms such as reconstruction and KL divergence loss. We implement the said VAE model in an <b>online and federated setting</b> to collaboratively train multiple models on different trucks, allowing them to generalize well without sharing underlying data while also accounting for the memory constraints at the edge. We train this model on data generated from a wind tunnel from <a href="https://github.com/juangamella/causal-chamber">causal chamber</a>, which consists of fans, a hatch, and multiple pressure sensors, and acts as a proxy for truck components. To evaluate the performance of our setup, we track metrics such as precision, recall, F1-score, and the number of true positives, false positives, and false negatives.</div>
 <br>
 
-<img src="./Images/Anomalies.png" width="403px"> <img src="./Images/WindTunnel.png" width="403px">
+<img src="./Images/Anomalies.png" width="405px"> <img src="./Images/WindTunnel.png" width="405px">
 *Figure 1. Anomalies introduced in time-series data and wind tunnel machine*
 
 We take four such data streams but with different operating ranges, and end up with non-overlapping distributions.
 
-<img src="./Images/data_stream.png" width="410x"> <img src="./Images/data_stream_with_anomalies.png" width="410x">
+<img src="./Images/data_stream.png" width="405px"> <img src="./Images/data_stream_with_anomalies.png" width="405px">
 *Figure 2. Data streams with different operating ranges for loads at intake and exhaust fans, and the injected anomalies*
 
 ---
 
 **Results**
+
+*F1-score for siloed training, central collection, and offline FL*
 
 |Data|Client 1|Client 2|Client 3|Client 4|Central data collection|Offline FL|
 |:---|:-------|:-------|:-------|:-------|:----------------------|:---------|
@@ -25,15 +27,13 @@ We take four such data streams but with different operating ranges, and end up w
 |Test data 3|0.7180|0.7148|0.7273|0.7054|0.7566|0.7361|
 |Test data 4|0.6675|0.6573|0.6553|0.6691|0.8016|0.7608|
 
-*Table 1. F1-score for siloed training, central collection, and offline FL*
-
 <br>
 
-<img src="./Images/Metric_trend.png" width="717px">
+<img src="./Images/Metric_trend.png" width="810px">
 
-*Figure 4. Trends in precision, recall, and F1-score for different buffer sizes in online FL*
+*Figure 3. Trends in precision, recall, and F1-score for different buffer sizes in online FL*
 
-Our findings establish that the offline and federated learning setup generalizes well to non-overlapping distributions and performs better than local training, where models are trained on a single dataset in isolation. Their performance approaches close to that of the centralized data collection baseline. For the online and federated models, we show that the number of false positives increases sharply as the memory constraints are made severe. This is attributed to the model memorizing and overfitting on training samples.
+<div align="justify">Our findings establish that the offline and federated learning setup generalizes well to non-overlapping distributions and performs better than local training, where models are trained on a single dataset in isolation. Their performance approaches close to that of the centralized data collection baseline. For the online and federated models, we show that the number of false positives increases sharply as the memory constraints are made severe. This is attributed to the model memorizing and overfitting on training samples.</div>
 
 ---
 
