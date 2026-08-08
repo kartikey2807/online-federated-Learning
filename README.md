@@ -4,22 +4,15 @@
 You can find the complete thesis report <a href="http://www.diva-portal.org/smash/record.jsf?pid=diva2:2083501">here</a>.
 
 <div align="justify">Electronic sensors on trucks produce large amounts of real-time data that can be used to model normal operations and identify anomalies to prevent systematic failures from happening. Several deep learning models such as GANs, LSTM-based autoencoders, and graph neural networks have been proposed for this task. However, these models either don't have an interpretable loss criterion, are slow to capture temporal dependencies, or are unstable to train in the presence of sparse correlations. We propose a transformer-based variational autoencoder (VAE) model that processes the entire time-series window in parallel, captures long-term dependencies, and has explainable terms such as reconstruction and KL divergence loss. We implement the said VAE model in an <b>online and federated setting</b> to collaboratively train multiple models on different trucks, allowing them to generalize well without sharing underlying data while also accounting for the memory constraints at the edge. We train this model on data generated from a wind tunnel from <a href="https://github.com/juangamella/causal-chamber">causal chamber</a>, which consists of fans, a hatch, and multiple pressure sensors, and acts as a proxy for truck components. To evaluate the performance of our setup, we track metrics such as precision, recall, F1-score, and the number of true positives, false positives, and false negatives.</div>
-
 <br>
-<img src="./Images/WindTunnel.png" width="717px">
 
-*Figure 1. Wind tunnel machine*
+<img src="./Images/Anomalies.png" width="410px"> <img src="./Images/WindTunnel.png" width="410px">
+*Figure 1. Anomalies introduced in time-series data and wind tunnel machine*
 
-<br>
-<img src="./Images/Anomalies.png" width="717px">
+We take four such data streams but with different operating ranges, and end up with non-overlapping distributions.
 
-*Figure 2. Types of anomalies introduced in time-series sensor data*
-
-We take four such data streams but with different operating modes to end up with non-overlapping distributions.
-
-<img src="./Images/distributions.png" width="717px">
-
-*Figure 3. Distributions for the four data streams*
+<img src="./Images/data_stream.png" width="410x"> <img src="./Images/data_stream_with_anomalies.png" width="410x">
+*Figure 2. Data streams with different operating ranges for loads at intake and exhaust fans, and the injected anomalies*
 
 ---
 
