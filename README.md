@@ -33,4 +33,17 @@ We use a causal chamber [<a href="https://www.nature.com/articles/s42256-024-009
 |Test 3|0.7180|0.7148|0.7273|0.7054|**0.7566**|0.7361|
 |Test 4|0.6675|0.6573|0.6553|0.6691|**0.8016**|0.7608|
 
-<div align="center">Table: F1-score for siloed training, central data collection, and offline FL</div>
+<img src="./Images/Metric_trend.png" style='height: 100%; width: 100%; object-fit: contain'>
+
+<div align="justify">
+In the first table, we observe the F1-score for siloed training, central data collection baseline, and offline FL, aggregated over 5 runs. We can clearly see that the offline FL implementation outperforms siloed training with an increase of 31.9% in the F1-score. The other image shows that as the memory buffer is reduced, the precision stays more or less the same, whereas recall initially drops and then skyrockets to 1.00. When we investigate the number of true positives, false positives, and false negatives, we see that the model tends to overfit and memorize whatever small number of samples it is trained on, and classifies all else as anomalies. Beyond a certain threshold, the model stops learning. This could be useful for an engineer to allocate sufficient memory on trucks and estimate performance, so that the model can be trained while satisfying resource limitations. 
+</div>
+<br>
+
+```
+@misc{sharma2026online,
+  title={Online and Federated Learning for Predictive Maintenance in Heavy-Duty Vehicles},
+  author={Sharma, Kartikey},
+  year={2026}
+}
+```
