@@ -24,9 +24,9 @@ We use a causal chamber [<a href="https://www.nature.com/articles/s42256-024-009
 *There is not much to discuss about the experiments. You can find the hyperparameters in the thesis PDF.*   
 ***Obseravations***
 
-|  |Local train 1|Local train 2|Local train 3|Local train 4|Central data collection|Offline FL|
+|  |Local Train 1|Local Train 2|Local Train 3|Local Train 4|Central Data Collection|Offline FL|
 |:-|:------------|:------------|:------------|:------------|:----------------------|:---------|
-|Test data 1|||||||
-|Test data 2|||||||
-|Test data 3|||||||
-|Test data 4|||||||
+|Test 1|||||||
+|Test 2|||||||
+|Test 3|||||||
+|Test 4|||||||
