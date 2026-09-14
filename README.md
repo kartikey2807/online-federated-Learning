@@ -11,13 +11,15 @@ New heavy-duty vehicles have multiple actuators and sensors that are used to gen
 <img src="./Images/Anomalies.png">
 
 <div align="justify">
-We use a causal chamber [<a href="https://www.nature.com/articles/s42256-024-00964-x">4</a>] wind tunnel device as a proxy for the actual truck component. It has actuators such as two fans and a hatch, and several pressure sensors at different positions. We can manipulate the actuators to record sensor data from a non-trivial system, where variables have first-order relations. The above figure also depicts the kind of anomalies we introduce. Point anomalies are impulses outside the normal operating range. In cumulative anomalies, a single point may be normal, but the entire window is anomalous (the signal being constant rather than sinusoidal). And lastly, contextual anomalies can be identified in the context of a small time window or with respect to another variable. So how do we generate anomalies? First, we define what normal operations are. In our case, they are sine and step signals (talking about fan loads) operating within a range of 0.5 and 1.0 with the hatch being closed. Using a combination of sine and step signals (with varying frequencies and amplitudes), we get <i>four</i> non-overlapping distributions. This is perfect for motivating FL implementation. We add anomalies by shifting the operating range between 0.1 and 0.3 for the intake and exhaust fans, opening the hatch, or adding negative impulses outside the normal range. Below, you can see the underlying data distributions.
+We use a causal chamber [<a href="https://www.nature.com/articles/s42256-024-00964-x">4</a>] wind tunnel device as a proxy for the actual truck component. It has actuators such as two fans and a hatch, and several pressure sensors at different positions. We can manipulate the actuators to record sensor data from a non-trivial system, where variables have first-order relations. The above figure also depicts the kind of anomalies we introduce. Point anomalies are impulses outside the normal operating range. In cumulative anomalies, a single point may be normal, but the entire window is anomalous (the signal being constant rather than sinusoidal). And lastly, contextual anomalies can be identified in the context of a small time window or with respect to another variable. So how do we generate anomalies? First, we define what normal operations are. In our case, they are sine and step signals (talking about fan loads) operating within a range of 0.5 and 1.0 with the hatch being closed. Using a combination of sine and step signals (with varying frequencies and amplitudes), we get <i>four</i> non-overlapping distributions. This is perfect for motivating FL implementation. We add anomalies by shifting the operating range between 0.1 and 0.3 for the intake and exhaust fans, opening the hatch, or adding negative impulses outside the normal range. Below, you can see the data streams and underlying data distributions.
 </div>
 <br>
 
 <img src="./Images/data_stream.png">
 <img src="./Images/data_stream_with_anomalies.png">
 <img src="./Images/distributions.png" style='height: 100%; width: 100%; object-fit: contain'>
+
+*The four non-overlapping data streams and the associated anomalies. Below we see their respective latent distributions.*
 
 ---
 
@@ -26,7 +28,9 @@ We use a causal chamber [<a href="https://www.nature.com/articles/s42256-024-009
 
 |  |Local train 1|Local train 2|Local train 3|Local train 4|Central data collection|Offline FL|
 |:-|:------------|:------------|:------------|:------------|:----------------------|:---------|
-|Test 1|||||||
-|Test 2|||||||
-|Test 3|||||||
-|Test 4|||||||
+|Test 1|0.6912|0.6577|0.5869|0.6514|**0.7490**|0.7465|
+|Test 2|0.5704|0.6817|0.5560|0.7838|**0.8592**|0.8503|
+|Test 3|0.7180|0.7148|0.7273|0.7054|**0.7566**|0.7361|
+|Test 4|0.6675|0.6573|0.6553|0.6691|**0.8016**|0.7608|
+
+<div align="center">Table: F1-score for siloed training, central data collection, and offline FL</div>
