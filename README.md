@@ -1,46 +1,6 @@
 ## Online and Federated Learning for Predictive Maintenance
-*In collaboration with Scania AB and Uppsala University*
 
-You can find the complete thesis report <a href="http://www.diva-portal.org/smash/record.jsf?pid=diva2:2083501">here</a>.
+*In collaboration with Scania AB*
 
 <div align="justify">Electronic sensors on trucks produce large amounts of real-time data that can be used to model normal operations and identify anomalies to prevent systematic failures from happening. Several deep learning models such as GANs, LSTM-based autoencoders, and graph neural networks have been proposed for this task. However, these models either don't have an interpretable loss criterion, are slow to capture temporal dependencies, or are unstable to train in the presence of sparse correlations. We propose a transformer-based variational autoencoder (VAE) model that can process the entire time-series window in parallel, captures long-term dependencies, and has explainable terms such as reconstruction and KL divergence loss. We implement the said VAE model in <b>online and federated settings</b> to train multiple models on different trucks collaboratively, allowing them to generalize well without sharing underlying data while also accounting for the memory constraints at the edge. We train this model on data generated from a wind tunnel from <a href="https://github.com/juangamella/causal-chamber">causal chamber</a>, which consists of fans, a hatch, and multiple pressure sensors, and acts as a proxy for truck components. To evaluate the performance of our setup, we track metrics such as precision, recall, F1-score, and the number of true positives, false positives, and false negatives. We answer <i>two research questions</i>: How well does the offline FL (batch training) perform compared to siloed training and a central data collection model? And how does the performance for online FL change for varying memory constraints?</div>
 <br>
-
-<img src="./Images/Anomalies.png" width="406px"> <img src="./Images/WindTunnel.png" width="406px">
-*Figure 1. Anomalies introduced in time-series data and wind tunnel machine*
-
-We take four such data streams but with different operating ranges, and end up with non-overlapping distributions.
-
-<img src="./Images/data_stream.png" width="406px"> <img src="./Images/data_stream_with_anomalies.png" width="406px">
-*Figure 2. Data streams with different operating ranges for loads at intake and exhaust fans, and the injected anomalies*
-
----
-
-**Results**
-
-*F1-score for siloed training, central data collection model, and offline FL*
-
-|Data|Client 1|Client 2|Client 3|Client 4|Central data collection|Offline FL|
-|:---|:-------|:-------|:-------|:-------|:----------------------|:---------|
-|Test data 1|0.6912|0.6577|0.5869|0.6514|0.7490|0.7465|
-|Test data 2|0.5704|0.6817|0.5560|0.7838|0.8592|0.8503|
-|Test data 3|0.7180|0.7148|0.7273|0.7054|0.7566|0.7361|
-|Test data 4|0.6675|0.6573|0.6553|0.6691|0.8016|0.7608|
-
-<br>
-
-<img src="./Images/Metric_trend.png" width="406px">
-
-*Figure 3. Trends in precision, recall, and F1-score for different buffer sizes in online FL*
-
-<div align="justify">Our findings establish that the offline and federated learning setup generalizes well to non-overlapping distributions and performs better than local training, where models are trained on a single dataset in isolation. Their performance approaches close to that of the centralized data collection baseline. For the online and federated models, we show that the number of false positives increases sharply under acute memory constraints. This is attributed to the model memorizing and overfitting on training samples.</div>
-
----
-
-```
-@misc{sharma2026online,
-  title={Online and Federated Learning for Predictive Maintenance in Heavy-Duty Vehicles},
-  author={Sharma, Kartikey},
-  year={2026}
-}
-```
