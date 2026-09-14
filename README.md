@@ -26,7 +26,7 @@ We use a causal chamber [<a href="https://www.nature.com/articles/s42256-024-009
 *There is not much to discuss about the experiments. You can find the hyperparameters in the thesis PDF.*   
 ***Obseravations***
 
-|  |Local train 1|Local train 2|Local train 3|Local train 4|Central data collection|Offline FL|
+|  |Local train 1|Local train 2|Local train 3|Local train 4|Central Data Collection|Offline FL|
 |:-|:------------|:------------|:------------|:------------|:----------------------|:---------|
 |Test 1|0.6912|0.6577|0.5869|0.6514|**0.7490**|0.7465|
 |Test 2|0.5704|0.6817|0.5560|0.7838|**0.8592**|0.8503|
@@ -36,7 +36,7 @@ We use a causal chamber [<a href="https://www.nature.com/articles/s42256-024-009
 <img src="./Images/Metric_trend.png" style='height: 100%; width: 100%; object-fit: contain'>
 
 <div align="justify">
-In the first table, we observe the F1-score for siloed training, central data collection baseline, and offline FL, aggregated over 5 runs. We can clearly see that the offline FL implementation outperforms siloed training with an increase of 31.9% in the F1-score. The other image shows that as the memory buffer is reduced, the precision stays more or less the same, whereas recall initially drops and then skyrockets to 1.00. When we investigate the number of true positives, false positives, and false negatives, we see that the model tends to overfit and memorize whatever small number of samples it is trained on, and classifies all else as anomalies. Beyond a certain threshold, the model stops learning. This could be useful for an engineer to allocate sufficient memory on trucks and estimate model performance, so that the model can be trained while satisfying resource limitations. You can read more in the report.
+In the first table, we observe the F1-score for siloed training, central data collection baseline, and offline FL, aggregated over 5 runs. We can clearly see that the offline FL implementation outperforms siloed training with an increase of 31.9% in the F1-score. The other image shows that as the memory buffer is reduced, the precision stays more or less the same, whereas recall initially drops and then skyrockets to 1.00. When we investigate the number of true positives, false positives, and false negatives, we see that the model tends to overfit and memorize whatever small number of samples it is trained on, and classifies all else as anomalies. Beyond a certain threshold, the model stops learning. This could be useful for an engineer to allocate sufficient memory on trucks and estimate model performance, so that the model can be trained while satisfying resource limitations. You can read more here.
 </div>
 <br>
 
